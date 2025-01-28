@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: #f0f0f0;
+    }
+
+    input {
+        padding: 10px;
+        width: 250px;
+        margin-right: 10px;
+        border: 1px solid black;
+        border-radius: 15px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        background-color: #4CAF50;
+        color: #fff;
+    }
+
+    button:hover {
+        background-color: #ff0000;
+    }
+
+    #output p {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        margin-top: 10px;
+        background-color: #4CAF50;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .strike {
+        align-items: center;
+    }
+
+    .line {
+        text-decoration: line-through red;
+    }
+
+    .delete-btn {
+        background-color: #4CAF50;
+        color: #fff;
+        margin-left: 10px;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+    .strike {
+        background-color: red;
+        color: #fff;
+        margin-left: 10px;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+    p {
+        border: 1px solid black;
+        padding: 20px;
+        width: 80%;
+        border-radius: 15px;
+        background-color: gray;
+    }
+</style>
+<body>
+    <center>
+        <div class="container" style="margin-top: 15%;">
+            <h1>Todo List</h1>
+            <input type="text" name="" id="content">
+            <button onclick="output()">Add Task</button>
+            <div id="mydiv"></div>
+        </div>
+    </center>
+</body>
+<script>
+    function output() {
+        let input = document.getElementById("content").value;
+
+        if (input == "") {
+            alert("Please Enter a Task");
+            return;
+        }
+
+        let newpara = document.createElement("p");
+
+        let span = document.createElement("span");
+        span.innerHTML = input;
+
+        let btn = document.createElement("button");
+        btn.innerHTML = "Complete";
+        btn.className = "strike"; 
+        btn.addEventListener("click", function () {
+            span.classList.toggle("line");
+        })
+
+        let delbtn = document.createElement("button");
+        delbtn.innerHTML = "Delete";
+        delbtn.className = "delete-btn";
+
+        delbtn.addEventListener("click", function () {
+            newpara.remove();
+        })
+
+        newpara.appendChild(span);
+        newpara.appendChild(btn);
+        newpara.appendChild(delbtn);
+
+        let div = document.getElementById("mydiv");
+        div.appendChild(newpara);
+
+        document.getElementById("content").value = "";
+    }
+</script>
+</html>

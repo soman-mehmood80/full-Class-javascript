@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Covnter</title>
+</head>
+<style>
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+.container{
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 16px;
+}
+input{
+font-size: 15px;
+margin-left: 60px;
+border-radius: 8px;
+}
+table{
+border: none;
+}
+td{
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+th{
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+    #btn1 {
+        background-color: rgb(1, 209, 1);
+        padding: 8px 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+
+    #btn2 {
+        background-color: red;
+        padding: 8px 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <p>
+            <input type="number" id="output" placeholder="Weight">
+            <button id="btn1" onclick="data()">Submit</button>
+            <button id="btn2" onclick="clr()">Clear</button>
+        </p>
+
+        <table border="1px">
+            <tr>
+                <th>kilogram</th>
+                <td id="kilo"></td>
+            </tr>
+            <tr>
+                <th>Pounds</th>
+                <td id="pound"></td>
+            </tr>
+            <tr>
+                <th>Miligram</th>
+                <td id="mili"></td>
+            </tr>
+
+            <tr>
+                <th>Ton</th>
+                <td id="Ton"></td>
+            </tr>
+            <tr>
+                <th>Ounce</th>
+                <td id="Ounce"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+
+    function data() {
+        let input = document.getElementById('output').value;
+        if (input == "") {
+            alert("Enter Weigth");
+            return;
+        }
+
+        let kg = document.getElementById('kilo');
+        kg.innerHTML = input * 1000;
+        kg.style.backgroundColor = "green"
+
+
+        let pound = document.getElementById('pound');
+        pound.innerHTML = input * 2.2046;
+        pound.style.backgroundColor = "green"
+
+        let mili = document.getElementById('mili');
+        mili.innerHTML = input * 1000000;
+        mili.style.backgroundColor = "green"
+
+
+        let Ton = document.getElementById('Ton');
+        Ton.innerHTML = input * 35.274;
+        Ton.style.backgroundColor = "green"
+
+
+        let Ounce = document.getElementById('Ounce');
+        Ounce.innerHTML = input * 0.00011023;
+        Ounce.style.backgroundColor = "green"
+    }
+
+    function clr() {
+
+        let kg = document.getElementById('kilo');
+        kg.innerHTML = input = "";
+        kg.style.backgroundColor = "white"
+
+        let pound = document.getElementById('pound');
+        pound.innerHTML = input = "";
+        pound.style.backgroundColor = "white"
+
+        let mili = document.getElementById('mili');
+        mili.innerHTML = input = "";
+        mili.style.backgroundColor = "white"
+
+
+        let Ton = document.getElementById('Ton');
+        Ton.innerHTML = input = "";
+        Ton.style.backgroundColor = "white"
+
+        let Ounce = document.getElementById('Ounce');
+        Ounce.innerHTML = input = "";
+        Ounce.style.backgroundColor = "white";
+
+    }
+
+</script>
+
+</html>

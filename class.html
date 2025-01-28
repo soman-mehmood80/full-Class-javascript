@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+            margin-right: 10px;
+            border: 1px solid black;
+            border-radius: 15px;
+            margin-top: 20%;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            background-color: #1ba000;
+            color: #ffffff;
+        }
+
+        button:hover {
+            background-color: #000000
+        }
+
+        #output p {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            margin-top: 10px;
+            background-color: #26b5ee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .strike {
+            align-items: center;
+        }
+
+        .line {
+            text-decoration: line-through red;
+        }
+
+        .delete-btn {
+            background-color: #007c06;
+            color: #fff;
+            margin-left: 10px;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        .strike-btn {
+            background-color: red;
+            color: #fff;
+            margin-left: 10px;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        p {
+            border: 1px solid black;
+            padding: 20px;
+            width: 80%;
+            border-radius: 15px;
+            background-color: gray;
+        }
+
+        .completed {
+            background-color: #b5e6a5;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="container">
+            <h1>Task Manager</h1>
+            <input type="text" name="" id="content">
+            <button onclick="output()">Add Task</button>
+            <button id="show" onclick="show()">All</button>
+            <button id="remaining" onclick="pad()">Complete</button>
+            <div id="mydiv"></div>
+        </div>
+    </center>
+</body>
+
+
+<script>
+    function output() {
+        let input = document.getElementById("content").value;
+
+        if (input == "") {
+            alert("Please Enter a Task");
+            return;
+        }
+
+        let newpara = document.createElement("p");
+
+        let span = document.createElement("span");
+        span.innerHTML = input;
+
+        let btn = document.createElement("button");
+        btn.innerHTML = "Complete";
+        btn.className = "strike-btn";
+        btn.addEventListener("click", function () {
+            span.classList.toggle("line");
+            newpara.classList.toggle("completed");
+        })
+
+        let delbtn = document.createElement("button");
+        delbtn.innerHTML = "Delete";
+        delbtn.className = "delete-btn";
+
+        delbtn.addEventListener("click", function () {
+            newpara.remove();
+        })
+
+        newpara.appendChild(span);
+        newpara.appendChild(btn);
+        newpara.appendChild(delbtn);
+
+        let div = document.getElementById("mydiv");
+        div.appendChild(newpara);
+
+        document.getElementById("content").value = "";
+    }
+
+    function pad() {
+        let allTasks = document.getElementById("mydiv").children;
+        for (let task of allTasks) {
+           
+            if (!task.querySelector("span").classList.contains("line")) {
+                task.style.display = "block";
+            } else {
+                task.style.display = "none";
+            }
+        }
+    }
+
+    function show() {
+        let allTasks = document.getElementById("mydiv").children;
+        for (let task of allTasks) {
+            task.style.display = "block"; 
+        }
+    }
+</script>
+</html>

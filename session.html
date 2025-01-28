@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme</title>
+</head>
+<style>
+    #Body{
+        background-color: white;
+        color: black;
+    }
+    .Light-mode{
+        background-color: white;
+        color: black;
+    }
+    .Dark-mode{
+        background-color: black;
+        color: white;
+    }
+</style>
+<body id="body">
+<h1>Theme Change</h1>
+<button onclick="change('Light-mode')">Light Mode</button>
+<button onclick="change('Dark-mode')">Dark Mode</button>
+    
+</body>
+<script>
+    function change (color) {
+        document.body.className = color;
+        sessionStorage.setItem('color' , color);
+    }
+
+    let savethem = sessionStorage.getItem('color');
+    if(savethem != null){
+        color(savethem);
+    }
+</script>
+</html>

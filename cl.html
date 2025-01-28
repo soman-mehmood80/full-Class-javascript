@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    border: 3px solid rgb(128, 128, 128);
+    background-color: #000000d7;
+    height: 59vh;
+    width: 19%;
+    border-radius: 20px;
+    margin-top: 5%;
+}
+input{
+    border-radius: 20px;
+    background-color:rgb(16, 0, 163);
+    height: 40px;
+    font-size: 30px;
+    width: 60px;
+    border: none;
+    font-size: 23px;
+    color: white;
+}
+
+#display{
+    width: 200px;
+    border: 1px solid black;
+    color: black;
+}
+.display{
+    margin-top: 50px;
+}
+</style>
+<body>  
+
+
+<div class="container">
+    <center>
+    <div class="display">
+        <p>
+            <input type="text" name="" id="display" readonly style="color: white;">
+           <input type="button" id="Clear" value="C" onclick="clr()" style="background-color: red;">
+        </p>
+    </div>
+<div class="keys">
+    <p>
+      <input type="button" name="" id="" value="1" onclick="addvalue('1')">
+      <input type="button" name="" id="" value="2" onclick="addvalue('2')">
+      <input type="button" name="" id="" value="3" onclick="addvalue('3')">
+      <input type="button" name="" id="" value="+" onclick="addvalue('+')">
+    </p>
+
+    <p>
+        <input type="button" name="" id="" value="4" onclick="addvalue('4')">
+        <input type="button" name="" id="" value="5" onclick="addvalue('5')">
+        <input type="button" name="" id="" value="6" onclick="addvalue('6')">
+        <input type="button" name="" id="" value="-" onclick="addvalue('-')">
+    </p>
+
+    <p>
+        <input type="button" name="" id="" value="7" onclick="addvalue('7')">
+        <input type="button" name="" id="" value="8" onclick="addvalue('8')">
+        <input type="button" name="" id="" value="9" onclick="addvalue('9')">
+        <input type="button" name="" id="" value="×" onclick="addvalue('*')">
+    </p>
+
+    <p>
+        <input type="button" name="" id="" value="." onclick="addvalue('.')">
+        <input type="button" name="" id="" value="0" onclick="addvalue('0')">
+        <input type="button" name="" id="" value="=" onclick="answer()">
+        <input type="button" name="" id="" value="÷"onclick="addvalue('/')">
+    </p>    
+
+    <p>
+        <input type="button" name="" id="" value="sin" onclick="runfun('sin')">
+        <input type="button" name="" id="" value="cos" onclick="runfun('cos')">
+        <input type="button" name="" id="" value="tan" onclick="runfun('tan')">
+        <input type="button" name="" id="" value="1/x" onclick="runfun('inverse')">
+    </p>    
+
+    <p>
+        <input type="button" name="" id="" value="sqrt" onclick="runfun('sqrt')">
+    </p>    
+</div>
+</center>
+</div>
+</body>
+<script>
+
+function addvalue(num){
+    let display =document.getElementById("display");
+    display .value+=num;
+}
+
+function clr (){
+    let display =document.getElementById("display");
+    display.value="";
+}
+
+function answer(){
+    let display =document.getElementById("display");
+    display.value = eval(display.value);
+}
+
+function runfun(func){
+    let display =document.getElementById('display');
+let value = parseFloat(display.value);
+
+if(isNaN(value)){
+    display.value ='Sorry';
+    return;
+}
+
+switch (func){
+    case'sin':
+    display.value = Math.sin(value);
+    break;
+
+    case'cos':
+    display.value = Math.cos(value);
+    break;
+
+    case'tan':
+    display.value = Math.tan(value);
+    break;
+
+    case'inverse':
+    display.value = 1 / value;
+    break;
+
+    case'sqrt':
+    display.value = Math.sqrt(value);
+    break;
+
+    default:
+        display.value = 'Error'
+}
+
+}
+</script>
+</html>
